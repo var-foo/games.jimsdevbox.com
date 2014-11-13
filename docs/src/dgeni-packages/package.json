@@ -1,0 +1,82 @@
+{
+  "name": "dgeni-packages",
+  "version": "0.8.2",
+  "description": "A collection of dgeni packages for generating documentation from source code",
+  "scripts": {
+    "test": "node ./node_modules/jasmine-node/bin/jasmine-node ngdoc/spec jsdoc/spec examples/spec",
+    "cover": "istanbul cover ./node_modules/jasmine-node/bin/jasmine-node -- ngdoc/spec jsdoc/spec examples/spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/dgeni-packages.git"
+  },
+  "keywords": [
+    "ngdoc",
+    "angular",
+    "angularjs",
+    "dgeni",
+    "document generation",
+    "javascript",
+    "jsdoc"
+  ],
+  "author": {
+    "name": "Pete Bacon Darwin"
+  },
+  "licenses": [
+    {
+      "type": "Apache",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/angular/dgeni-packages/issues"
+  },
+  "dependencies": {
+    "dgeni": "~0.2.1",
+    "canonical-path": "0.0.2",
+    "lodash": "~2.4.1",
+    "winston": "~0.7.2",
+    "graceful-fs": "~2.0.1",
+    "q": "~1.0.0",
+    "glob": "~3.2.8",
+    "q-io": "~1.10.9",
+    "nunjucks": "~1.0.1",
+    "catharsis": "^0.7.0",
+    "esprima": "^1.0.4"
+  },
+  "peerDependencies": {
+    "dgeni": "~0.2.1"
+  },
+  "devDependencies": {
+    "rewire": "~2.0.0",
+    "jasmine-node": "~1.13.1",
+    "di": "~0.0.1"
+  },
+  "contributors": [
+    {
+      "name": "Peter Bacon Darwin",
+      "email": "pete@bacondarwin.com"
+    },
+    {
+      "name": "Andy Joslin",
+      "email": "andytjoslin@gmail.com"
+    },
+    {
+      "name": "Julie",
+      "email": "ju.ralph@gmail.com"
+    },
+    {
+      "name": "Kevin Rowe",
+      "email": "kevinrowe@outlook.com"
+    }
+  ],
+  "readme": "# Dgeni Packages\n\nThis repository contains a collection of dgeni packages that can be used by the dgeni documentation\ngenerator to create documentation from source code.\n\n\nOut of the box there are the following packages:\n\n* `jsdoc` - a standard set of processors that can extract jsdoc documents and render them as HTML.\n* `ngdoc` - *(depends upon the `jsdoc` package)* an extra set of processors and templates that\nare specific to angularjs projects.\n\n\n#### `jsdoc` Package\n\nThis package contains the following processors:\n\n* `doc-extractor` - used to load up documents from files.  This processor can be configured to use a\nset of **extractors**.  The `jsdoc` package has a single `js` extractor, which can extract documents\nfrom jsdoc style comments in files.\n* `tag-parser` - parses the jsdoc tags in the extracted documents.\n* `tag-extractor` - extracts the tags information and converts it to specific properties on\nthe documents, based on a set of tag-definitions.  The `jsdoc` package contains definitions for the\nfollowing tags: `name`, `memberof`, `param`, `property`, `returns`, `module`, `description`, `usage`,\n`animations`, `constructor`, `class`, `classdesc`, `global`, `namespace` and `kind`.\n* `nunjucks-renderer` - uses the Nunjucks template library to render the documents into files, such\nas HTML or JS, based on templates.\n\nThis package does not provide any templates.\n\n### `ngdoc` Package\n\nThere is one new document extractor in this package, `ngdoc`, which can pull a single document from\nan ngdoc content file.\n\nOn top of the processors provided by the `jsdoc` package, this packages adds the following processors:\n\n* `filter-ngdocs` -\nFor AngularJS we are only interested in documents that contain the @ngdoc tag.  This processor\nremoves docs that do not contain this tag.\n\n* `memberof` -\nAll docs that have a `@memberof` tag are attached to their parent document and removed from the top\nlevel list of docs.\n\n* `links` -\nParse all `{@link ... }` inline tags in the docs and replace with real anchors.  This processor is\nable to compute URLs for code references.\n\n* `examples` -\nParse the `<example>` tags from the content, generating new docs that will be converted to extra\nfiles that can be loaded by the application and used, for example, in live in-place demos of the\nexamples and e2e testing.\n\n* `api-docs` -\nThis processor runs a bunch of computations that are specifically related to docs for API components.\nIn particular, it will compute the package name for the module (e.g.\nangular or angular-sanitize, it collects up all documents that belong to the module and\nattaches them to the module doc in the `components` property, it computes the URL path to the document\nin the docs app and the outputPath to the final output file, it relates documents about angular\nservices to their corresponding angular service provider document.\n\nThis package also provides a set of templates for generating an HTML file for each document: api,\ndirective, error, filter function, input, module, object, overview, provider, service, type and a\nnumber to support rendering of the runnable examples.\n\n\n## HTML Rendering\n\nWe render each of these documents as an HTML page. We use the \"nunjucks\" JavaScript template\ntool-kit to generate HTML based on the data in each document. We have nunjucks tags and filters that\ncan render links and text as markdown and will highlight code.\n\nThe template used to render the doc is computed by a `templateFinder`, which uses the first match\nfrom a set of patterns in a set of folders, provided in the configuration. This allows a lot of control to provide\ngeneric templates for most situations and specific templates for exceptional cases.\n\nHere is an example of the angularjs patterns:\n\n```\nrendering: {\n\n      ...\n\n      templatePatterns: [\n        '${ doc.template }',\n        '${ doc.id }.${ doc.docType }.template.html',\n        '${ doc.id }.template.html',\n        '${ doc.docType }.template.html'\n      ],\n\n      ...\n\n      templateFolders: [\n        'templates'\n      ]\n\n    },\n```\n",
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/angular/dgeni-packages",
+  "_id": "dgeni-packages@0.8.2",
+  "dist": {
+    "shasum": "acb01477d773697be411bd4d27a4c5ddce1ca98c"
+  },
+  "_from": "dgeni-packages@",
+  "_resolved": "https://registry.npmjs.org/dgeni-packages/-/dgeni-packages-0.8.2.tgz"
+}

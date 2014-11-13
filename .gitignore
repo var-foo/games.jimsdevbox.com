@@ -1,0 +1,16 @@
+.DS_Store
+.ftppass
+.idea/
+.tmp
+.sass-cache
+nbproject/
+npm-debug.log
+node_modules/
+coverage/
+app/styles/*.css
+app/bower_components/
+dist/
+grunt.txt
+gruntfile.txt
+docs/generated/
+styleguide/

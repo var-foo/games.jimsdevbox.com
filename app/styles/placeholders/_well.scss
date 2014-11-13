@@ -1,0 +1,6 @@
+// # Well
+// Make a section of content stand out
+%well {
+	@extend %padded-box;
+	@include inset;
+}

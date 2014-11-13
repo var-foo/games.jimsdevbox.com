@@ -1,0 +1,210 @@
+{% extends "base.template.html" %}
+
+{% block content %}
+<section role="main" class="container main-body">
+<h1>Welcome to the <a href="">CHANGE THIS IN DOCS/SRC/DGENI-PACKAGES/NGDOC/TEMPLATES/INDEXPAGE.TEMPLATE.HTML</a> documentation site!</h1>
+
+<p class="lead">This site contains all the ngdoc info for this AngularJS application.</p>
+
+<h2>To install this project for local development:</h2>
+<ul>
+    <li>Clone the repository <kbd></kbd></li>
+    <li>If you don't already have <a href="https://www.npmjs.org/">NPM</a>, install it.</li>
+    <li>If you don't already have <a href="http://yeoman.io/">Yeoman</a>, install it. This will also install <a
+            href="http://gruntjs.com/getting-started">GruntJS</a> and <a href="http://bower.io/">Bower</a></li>
+    <li>In your project directory that you cloned from github, run <kbd>npm install && bower install</kbd> This
+        will install all of the dependencies required for the project to run.
+    </li>
+</ul>
+<p>You should now be able to run <kbd>grunt serve</kbd> and it will open a tab in your browser showing the website.
+</p>
+
+<h2>How to write documentation:</h2>
+
+
+<p>This project uses a form of <a href="http://usejsdoc.org/">jsdoc</a> for all of its documentation.
+</p>
+<p>This means that all the docs are stored inline in the source code and so is kept in sync as the code
+    changes.</p>
+<h2>Using <code>ngdoc</code></h2>
+
+<p>The flavour of jsdoc used by AngularJS is called ngdoc and is parsed by a nodejs utility stored in the
+    project itself under the <code>/node_modules/dgeni</code> folder and the <code>/docs</code> folder. The documentation is best built using grunt:</p>
+
+<kbd>grunt dgeni</kbd>
+
+<p>This will generate the documentation. Look for it inside
+    <code>/docs/generated</code>.</p>
+
+<h3>Standard supported jsdoc directives</h3>
+
+<p>The ngdoc utility has basic support for many of the standard jsdoc directives. But in particular it is
+    interested in the following directives:</p>
+
+<ul>
+    <li>
+        <code>@name name</code> - the name of the ngdoc document
+    </li>
+    <li>
+        <code>@param {type} name description</code> - describes a parameter of a function
+    </li>
+    <li>
+        <code>@returns {type} description</code> - describes what a function returns
+    </li>
+    <li>
+        <code>@requires</code> - normally indicates that a JavaScript module is required; in an Angular service
+        it is used to describe what other services this service relies on or what directive this directive relies on
+    </li>
+    <li>
+        <code>@property</code> - describes a property of an object
+    </li>
+    <li>
+        <code>@description</code> - used to provide a description of a component in markdown
+    </li>
+    <li>
+        <code>@link</code> - specifies a link to a URL or a type in the API reference. <strong>NOTE</strong>: to
+        link to <code>ng.$rootScope.Scope#$on</code> insert <code>methods_</code> between <code>#</code> and the
+        actual method name: <code>@link ng.$rootScope.Scope#methods_$on listen</code>. Same goes for
+        properties and events.
+    </li>
+    <li>
+        <code>@example</code> - specifies an example that will be formatted as a code block
+    </li>
+    <li>
+        <code>@deprecated</code> - specifies that the following code is deprecated and should not be used
+    </li>
+    <li>
+        <code>@this</code> - specifies what <code>this</code> refers to in the context of a documented function
+    </li>
+</ul>
+<p>The <code>type</code> must be wrapped in <code>{}</code> curly braces; e.g. {Object|Array}
+    Parameters can be made optional by putting the <code>[name]</code> in square brackets; e.g. <code>@param
+        {boolean} [ownPropsOnly=false]</code>
+    Descriptions can contain markdown formatting</p>
+
+<h3>AngularJS specific ngdoc directives</h3>
+
+<p>In addition to the standard jsdoc directives, there are a number that are specific to the Angular
+    code-base:</p>
+
+<ul>
+    <li>
+        <code>@ngdoc</code> - specifies the type of thing being documented. See below for more detail.
+    </li>
+    <li>
+        <code>@scope</code> - specifies that the documented directive will create a new scope
+    </li>
+    <li>
+        <code>@priority</code> - specifies the documented directive's priority
+    </li>
+    <li>
+        <code>@replace</code> - empty - indicates whether the directive replaces the element
+    </li>
+    <li>
+        <code>@transclude</code> - empty - indicates whether the directive uses transclusion
+    </li>
+    <li>
+        <code>@animations</code> - specifies the animations that the documented directive supports
+    </li>
+    <li>
+        <code>@usage</code> - How to use - handy for filters and directive as an attribute
+    </li>
+    <li>
+        <code>@restrict</code> - specifies how directives should be shown in the usage section. For example, for
+        [E]lement, [A]ttribute, and [C]lass, use <code>@restrict ECA</code>
+    </li>
+    <li>
+        <code>@methodOf type</code> - links a method to the object/service where it is defined
+    </li>
+    <li>
+        <code>@propertyOf type</code> - links a property to the object/service where it is defined
+    </li>
+    <li>
+        <code>@eventOf type</code> - links a method to the object/service where it is defined
+    </li>
+    <li>
+        <code>@eventType emit|broadcast</code> - specifies whether the event is emitted or broadcast
+    </li>
+</ul>
+<h3>The <code>@ngdoc</code> Directive</h3>
+
+<p>This directive helps to specify the template used to render the item being documented. For instance,
+    a directive would have different properties to a filter and so would be documented differently. The
+    commonly used types are:</p>
+
+<ul>
+    <li>
+        <code>overview</code> - Give an overview of the file/module being documented
+    </li>
+    <li>
+        <code>interface</code> - Describe the interface of an object or service, specified by the
+        <code>@name</code> directive. <em>(abstract: use <code>@object</code> or <code>@service</code> instead)</em>
+
+        <ul>
+            <li>
+                <code>service</code> - Describe an AngularJS service, such as <code>$compile</code> or <code>$http</code>,
+                for instance.
+            </li>
+            <li>
+                <code>object</code> - Describe a well defined object (often exposed as a service)
+
+                <ul>
+                    <li>
+                        <code>function</code> - Describe a function that will be available to other methods <em>(such
+                        as a helper function within the ng module)</em>
+                    </li>
+                    <li>
+                        <code>method</code> - Describe a method on an object/service/directive controller
+                    </li>
+                    <li>
+                        <code>property</code> - Describe a property on an object/service/directive controller
+                    </li>
+                    <li>
+                        <code>event</code> - Used in angular.js for scope events, but we have altered it to cover
+                        any type of event. You can use this to document your click handlers and whatnot.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>directive</code> - Describe an AngularJS directive
+    </li>
+    <li>
+        <code>filter</code> - Describe an AngularJS filter
+    </li>
+    <li>
+        <code>inputType</code> - Describe a specific type of AngularJS input directive (such as
+        <code>text</code>, <code>email</code> or <code>checkbox</code>)
+    </li>
+    <li>
+        <code>error</code> - Describe a minErr error message
+    </li>
+</ul>
+<p>In addition there is support for the following <code>@ngdoc</code> types. But they do not seem to appear in
+    the
+    current documentation:</p>
+
+<ul>
+    <li><code>parameters</code></li>
+    <li><code>returns</code></li>
+    <li><code>this</code></li>
+    <li><code>directiveInfo</code></li>
+</ul>
+<h2>Code blocks</h2>
+
+<p>In line code can be specified by enclosing the code in back-ticks (`).
+    A block of multi-line code can be enclosed in triple back-ticks (```) but it is formatted better if
+    it is enclosed in &lt;pre&gt;...&lt;/pre&gt; tags and the code lines themselves are indented.</p>
+
+
+<p>It is possible to embed examples in the documentation along with appropriate e2e scenarios. These
+    examples and scenarios will be converted to runnable code within the documentation. So it is important
+    that they work correctly. To ensure this, all these e2e scenarios are run as part of the automated test
+    tasks in Travis and the CI server.</p>
+
+<p>In the documentation you find two different methods for specifying a runnable example: using an <code>&lt;example&gt;</code>
+    tag or using a <code>&lt;doc:example&gt;</code> tag.</p>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,7 @@
+// # Heading Placeholder
+// This is used to avoid a long string of h1-h6 selectors
+// `h1 { @extend %heading }`
+%heading {
+	@extend %reset-box;
+	font-weight: $bold;
+}

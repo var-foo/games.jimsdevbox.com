@@ -1,0 +1,61 @@
+/*
+# Reset Box
+Remove margins/padding as needed.
+## Example
+`.my-container { @extend %reset-box; }`
+*/
+%reset-box {
+	margin: 0;
+	padding: 0;
+}
+
+/*
+# Reset List
+Remove list styles as needed.
+## Example
+`.my-list { @extend %reset-list; }`
+*/
+%reset-list {
+	@extend %reset-box;
+	list-style: none;
+}
+
+/*
+# Padded Box
+Applies horizontal padding to match vertical rhythm
+## Example
+`.my-container { @extend %padded-box; }`
+*/
+%padded-box {
+	padding-left: $base-leader;
+	padding-right: $base-leader;
+}
+
+/*
+# Visually Hidden
+This will hide an element from all but screen readers.
+## Example
+`.skip-nav { @extend %visually-hidden; }`
+*/
+%visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/*
+# Clear fix
+For clearing floats. Useful for rows and such.
+
+## Example
+`.my-row-element { @extend %clearfix; }`
+*/
+%clearfix {
+    @include clearfix;
+    position: relative;
+}

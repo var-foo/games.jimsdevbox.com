@@ -1,0 +1,39 @@
+/*
+# Media
+A placeholder for a media component. This allows for semantic style rather than specific html.
+## Example
+`.cat { @extend %media; }`
+```
+<style>.cat { @extend %media; }</style>
+<div class="cat">
+	<img src="http://placekitten.com/64/64" alt="Cute kitten" />
+	<p>Cute kitty</p>
+</div>
+```
+*/
+%media {
+	@include clearfix();
+
+	> :first-child { float: left; }
+
+	> :last-child { float: left; }
+}
+
+/*
+# Media Reversed
+Like media, but the floating is reversed.
+*/
+%media-alt {
+	@extend %media;
+
+	> :first-child { float: right; }
+}
+
+/*
+# Media Reversed
+Like media, but the floats are opposing.
+*/
+%media-opposite {
+    @extend %media;
+    > :last-child { float: right; }
+}

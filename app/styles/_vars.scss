@@ -1,0 +1,107 @@
+/*
+# Vertical Rhythm
+Base font and line height for vertical rhythm.
+For accessibility, $base-line-height should be 1.5 times the $base-font-size
+[WCAG](http://www.w3.org/TR/WCAG20/#visual-audio-contrast-visual-presentation)
+*/
+$base-font-size: 12px !default; // Mobile-first font sizing
+$base-line-height: $base-font-size * 1.5 !default;
+
+$desktop-font-size: 16px; // Desktop font sizing
+$desktop-line-height: $desktop-font-size * 1.5;
+
+/*
+# Responsive design breakpoints
+
+It is not advisable to set breakpoints in responsive designs based on specific
+device widths. Instead, breakpoints should be applied when your content begins
+to look awkward. If there are other widths that you need to specifically support
+and a named variable makes sense, feel free to add it here (ex. $desk-start: 64.0625em; // 1025px ).
+
+Using ems instead of px allows your breakpoints to be relative to your $base-font-size.
+
+## Example
+`@media screen and (min-width: $palm-end) { [Styles Here] }`
+*/
+$palm-end: 30.0625em; // 481px
+$break-tab: 45em;
+$break-desk: 62em;
+
+$small-text: ms(-1);
+$micro-text: ms(-3);
+$grid-background-baseline-color: rgba(0, 0, 22, 0.07);
+$grid-background-baseline-height: $base-line-height;
+
+$default-trailer: 1em;
+
+
+// # Font stack
+$bold: 700;
+$typeface: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$headline-font: $typeface;
+$headline-weight: $bold;
+
+/*
+# Colors
+| Color Name  | Color Code | Primary Use                               |
+|-------------|------------|-------------------------------------------|
+| lightGreen  | #A3BF57    | Headers                                   |
+| green       | #009900    | Whatever you want                         |
+| darkGreen   | #839F33    | Default buttons, success messaging        |
+| lightOrange | #EB8A23    | Final action buttons                      |
+| darkOrange  | #E67800    | Secondary navigation, warning messaging   |
+| lightBlue   | #2081BC    | Headers                                   |
+| blue        | #0000FF    | Link colors, as Tim-Berners Lee intended. |
+| darkBlue    | #153A86    | Primary navigation                        |
+| blueGrey    | #23608B    | Linked icons                              |
+| lightPurple | #F3E7FB    | Filter background                         |
+| darkPurple  | #551387    | Toggle buttons                            |
+| red         | #B5121B    | Error messaging, destructive actions      |
+| pureBlack   | #000000    | Use sparingly                             |
+| black       | #444444    | Primary text color                        |
+| white       | #FFFFFF    | Contrast text, background                 |
+| grey        | #666666    | Disabled button background                |
+| lightGrey   | #DDDDDD    | Disabled text                             |
+*/
+$red: #b5121b;          // Errors, destructive actions
+$lightOrange: #eb8a23;  // Final action buttons
+$darkOrange: #e67800;   // Secondary navigation, warning
+$lightGreen: #A3BF57;   // Header
+$green: #009900;        // Search button?
+$darkGreen: #839f33;    // Standard buttons, success
+$lightBlue: #2081bf;    // Header
+$blue: #0000FF;         // Links
+$darkBlue: #153a86;     // Primary nav
+$blueGrey: #005e82;     // Icon fonts when linked
+$lightPurple: #F3E7FB;  // Filters background
+$darkPurple: #551387;   // Toggle button
+$pureBlack: #000;       // Use very sparingly
+$black: #444;           // Default text color
+$grey: #666;            // Borders and disabled button backgrounds
+$lightGrey: #DDD;       // Disabled text
+$white: #FFF;           // contrast text, background
+
+/*
+# Semantic naming of colors
+Rather than relying on specific colors, we want to apply styles based on meaning.
+*/
+$text-color: $black;
+$link-color: $blue; // As Tim-Berners Lee intended
+$warning-color: $darkOrange;
+$error-color: $red;
+$success-color: $darkGreen;
+$primary-header: $lightBlue;
+$secondary-header: $lightGreen;
+$icon-link: $blueGrey; // This probably doesn't need to be some random blue color.
+
+$selection-bg-color: $lightBlue;
+$selection-text-color: $text-color;
+
+// # Contrast
+// This is used in the contrast mixin to determine which text color to use.
+$contrasted-lightness-threshold: 45%;
+$contrasted-dark-default: $text-color;
+
+// # Borders
+// Standard border definitions.
+$full-border: 1px solid $grey;

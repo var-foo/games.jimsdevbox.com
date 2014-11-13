@@ -21,3 +21,5 @@ Imports the [Compass](http://compass-style.org/reference/compass/) library, incl
 @import "placeholders/media";
 
 // ## This is the beginning of the partials where real CSS happens.
+@import "global/global";
+@import "partials/default";

@@ -7,7 +7,8 @@
 angular.module('app', [
     'ui.router',
     'vfStyleResolve',
-    'ngResource'
+    'ngResource',
+    'tripeaks'
 ]).config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     'use strict';
 

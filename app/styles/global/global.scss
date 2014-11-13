@@ -1,0 +1,240 @@
+/* The table */
+body{
+    background: url(/images/body.jpg) no-repeat center 0 #120902;
+    font-size: 1.5em;
+}
+
+p { margin:0; }
+
+#wrapper{
+    position:relative;
+    margin:auto;
+    overflow:hidden;
+    width:1200px;
+    height:600px;
+}
+
+.stats{
+    position:absolute;
+    color:#04A1F2;
+    border:1px solid #04A1F2;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    padding:5px;
+}
+
+#stats{
+    top: 435px;
+    left:100px;
+}
+
+#info{
+    top: 435px;
+    right: 100px;
+}
+
+.statVal { font-weight: 700; }
+
+#newHand{
+    position:absolute;
+    top: 526px;
+    left:100px;
+    cursor:pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    padding: 5px 10px;
+    background: -moz-linear-gradient(
+            top,
+            #a3a3a3 0%,
+            #3b3b3b 50%,
+            #242424 50%,
+            #000000);
+    background: -webkit-gradient(
+            linear, left top, left bottom,
+            from(#a3a3a3),
+            color-stop(0.50, #3b3b3b),
+            color-stop(0.50, #242424),
+            to(#000000));
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border: 1px solid #000000;
+    -moz-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.6);
+    -webkit-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.6);
+    text-shadow:
+    0px -1px 0px rgba(000,000,000,1),
+    0px 1px 0px rgba(255,255,255,0.2);
+}
+#changeTheme {
+    position: absolute;
+    top: 526px;
+    left: 200px;
+}
+
+/* We start all cards in the Hole, then animate out. */
+#hole,
+.card{
+    top:400px;
+    left:500px;
+}
+
+/* The Cards */
+.card,
+.handCard,
+#hole {
+    width: 98px;
+    height: 142px;
+    position: absolute;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 2px 2px 3px rgba(50, 50, 50, 0.85);
+}
+
+.card:hover,
+.handCard:hover,
+#hole:hover {
+    cursor:pointer;
+    border-color: #fff;
+}
+
+.handCard{
+    top:400px;
+    left:650px;
+}
+
+/* Setting the card faces... */
+.front{ background: #fff url(/images/largecards.png) no-repeat 0 0; }
+
+/* ...and their backs */
+.back,
+#hole.back {
+    background:#234567 url(/images/card-back.png) no-repeat -1px -1px !important; /* The !important needs to stay since the background position gets inlined. */
+}
+
+/* Dirty set the positions */
+#card-1{
+    top:0;
+    left:150px;
+}
+#card-2{
+    top:0;
+    left:550px;
+}
+#card-3{
+    top:0;
+    left:950px;
+}
+#card-4{
+    top:75px;
+    left:100px;
+}
+#card-5{
+    top:75px;
+    left:200px;
+}
+#card-6{
+    top:75px;
+    left:500px;
+}
+#card-7{
+    top:75px;
+    left:600px;
+}
+#card-8{
+    top:75px;
+    left:900px;
+}
+#card-9{
+    top:75px;
+    left:1000px;
+}
+#card-10{
+    top:150px;
+    left:50px;
+}
+#card-11{
+    top:150px;
+    left:150px;
+}
+#card-12{
+    top:150px;
+    left:250px;
+}
+#card-13{
+    top:150px;
+    left:450px;
+}
+#card-14{
+    top:150px;
+    left:550px;
+}
+#card-15{
+    top:150px;
+    left:650px;
+}
+#card-16{
+    top:150px;
+    left:850px;
+}
+#card-17{
+    top:150px;
+    left:950px;
+}
+#card-18{
+    top:150px;
+    left:1050px;
+}
+#card-19{
+    top:225px;
+    left:0;
+}
+#card-20{
+    top:225px;
+    left:100px;
+}
+#card-21{
+    top:225px;
+    left:200px;
+}
+#card-22{
+    top:225px;
+    left:300px;
+}
+#card-23{
+    top:225px;
+    left:400px;
+}
+#card-24{
+    top:225px;
+    left:500px;
+}
+#card-25{
+    top:225px;
+    left:600px;
+}
+#card-26{
+    top:225px;
+    left:700px;
+}
+#card-27{
+    top:225px;
+    left:800px;
+}
+#card-28{
+    top:225px;
+    left:900px;
+}
+#card-29{
+    top:225px;
+    left:1000px;
+}
+#card-30{
+    top:225px;
+    left:1100px;
+}

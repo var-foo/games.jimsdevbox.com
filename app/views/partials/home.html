@@ -1,1 +1,16 @@
-<h2>{{message}}</h2>
+<div id="wrapper">
+    <div id="field"><div data-ng-repeat="card in fieldCards" id="card-{{$index + 1}}" class="card fieldCard back" data-ng-class="{'peak': $index < 4}" data-card="{{card.suit}}_{{card.name}}" style="background-position: {{card.backgroundPosition}}"></div></div>
+    <div id="hole" class="back"></div>
+    <div id="card"></div>
+    <div id="hand"><div data-ng-show="hand.length" class="card front handCard" data-card="hand[hand.length-1].info" style="background-position: {{hand[hand.length-1].backgroundPosition}}"></div></div>
+    <div id="stats" class="stats">
+        <p>Score: <span class="statVal" id="score">{{score}}</span></p>
+        <p>Cards Left: <span class="statVal" id="cardsLeft">{{cardsLeft}}</span></p>
+    </div>
+    <button id="newHand" data-ng-click="deal()">New Hand</button>
+    <div id="info" class="stats">
+        <p>This Run: <span class="statVal" id="currentRun">{{currentRun}}</span> pts</p>
+        <p>Best Run: <span class="statVal" id="bestRun">{{bestRun}}</span> pts</p>
+        <p>All Time: <span class="statVal" id="allTimeBestRun">{{allTimeBestRun}}</span> pts</p>
+    </div>
+</div>

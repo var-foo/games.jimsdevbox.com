@@ -9,6 +9,8 @@ angular.module('tripeaks').directive('tpCard', function($timeout, Field){
         link: function(scope,elem,attrs,tpField){
             tpField.registerCard(elem);
             scope.card.id = attrs.id;
+            // TODO: isPeak is not working
+            scope.card.isPeak = elem.hasClass('peak');
             elem.click(function(){
                 var handVal = Field.getHandVal();
                 Field.removeFieldCard(scope.card);

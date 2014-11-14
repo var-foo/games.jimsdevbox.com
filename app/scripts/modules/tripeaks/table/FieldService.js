@@ -1,4 +1,4 @@
-angular.module('tripeaks').factory('Field', function(Hand){
+angular.module('tripeaks').factory('Field', function(Hand, Score){
     "use strict";
 
     var handVal = null;
@@ -21,9 +21,10 @@ angular.module('tripeaks').factory('Field', function(Hand){
 
             // make a copy of the card so we can keep the field array the same length
             var cardForHand = $.extend({}, card);
-            if(fieldVal === handVal + 1 || fieldVal === handVal -1){
+            if((fieldVal === handVal + 1 || fieldVal === handVal -1) || (fieldVal === 1 && handVal === 13) || (fieldVal === 13 && handVal === 1)){
                 Hand.receiveCard(cardForHand);
                 fieldCards[card.index].value = null;
+                Score.addToScore(card.isPeak);
                 return true;
             } else{
                 return false;

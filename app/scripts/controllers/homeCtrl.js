@@ -1,4 +1,4 @@
-angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand){
+angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Score){
     "use strict";
 
     $scope.fieldCards = [];
@@ -7,14 +7,13 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     $scope.hole = [];
 
-    $scope.score = 0;
+    $scope.cardsLeft = $scope.hole.length;
 
-    $scope.cardsLeft = 0;
+    $scope.$watch('hole.length', function(n){
+        $scope.cardsLeft = n;
+    });
 
-    $scope.currentRun = 0;
-    $scope.bestRun = 0;
-    $scope.allTimeBestRun = 0;
-
+    // watch the hand card for changes
     $scope.$watch(function() {
             return Hand.getCard();
         }, function(n){
@@ -22,6 +21,17 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
             $scope.hand = n;
         });
 
+    // watch the score for changes
+    $scope.$watch(function(){
+        return Score.getScore();
+    }, function(n){
+        console.log('score changed');
+        $scope.score = n.score;
+        $scope.thisRun = n.thisRun;
+        $scope.currentRun = n.currentRun;
+        $scope.bestRun = n.bestRun;
+        $scope.allTimeBestRun = n.allTimeBestRun;
+    }, true);
 
     $scope.deal = function(){
         var newDeal = Deck.shuffle().shuffle().deal();
@@ -46,10 +56,11 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
     $scope.getCardInfo = function(idx){
         $scope.fieldCards[idx].index = idx;
         return $scope.fieldCards[idx];
-    }
+    };
 
-    $scope.flipHoleCard = function(){
+    $scope.holeClick = function(){
+        Score.decrementScore(5);
         Hole.passCardToHand();
-    }
+    };
 
 });

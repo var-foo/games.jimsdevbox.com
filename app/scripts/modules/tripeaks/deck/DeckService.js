@@ -10,6 +10,7 @@ angular.module('tripeaks').factory('Deck', function(Card){
                 number = i % 13 + 1;
                 cards.push(Card.getCard(suit, number));
             }
+
         };
 
     newCards();
@@ -28,10 +29,10 @@ angular.module('tripeaks').factory('Deck', function(Card){
                 newCards();
                 this.shuffle();
             }
-            for (i = 0; i < 31; i++) {
+            for (i = 0; i < 30; i++) {
                 field.push(cards.pop());
             }
-            for (i = 0; i < cards.length; i++) {
+            for (i = 0; i < 22; i++) {
                 hole.push(cards.pop());
             }
 

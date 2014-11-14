@@ -4,6 +4,7 @@ angular.module('tripeaks').directive('tpField', function($timeout, defaults, Fie
     return {
         transclude: true,
         restrict: "A",
+        replace: true,
         template: '<div id="field" data-ng-transclude></div>',
         controller: function(){
 

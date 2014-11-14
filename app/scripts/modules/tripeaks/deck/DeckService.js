@@ -23,7 +23,7 @@ angular.module('tripeaks').factory('Deck', function(Card){
             return this;
         },
         deal: function(){
-            var i, field = [], hand = [];
+            var i, field = [], hole = [];
             if (!cards.length) {
                 newCards();
                 this.shuffle();
@@ -32,13 +32,13 @@ angular.module('tripeaks').factory('Deck', function(Card){
                 field.push(cards.pop());
             }
             for (i = 0; i < cards.length; i++) {
-                hand.push(cards.pop());
+                hole.push(cards.pop());
             }
 
             return {
                 field: field,
-                hand: hand
-            }
+                hole: hole
+            };
         }
-    }
+    };
 });

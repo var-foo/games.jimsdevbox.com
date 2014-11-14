@@ -1,8 +1,7 @@
 <div id="wrapper">
-    <div id="field"><div data-ng-repeat="card in fieldCards" id="card-{{$index + 1}}" class="card fieldCard back" data-ng-class="{'peak': $index < 4}" data-card="{{card.suit}}_{{card.name}}" style="background-position: {{card.backgroundPosition}}"></div></div>
-    <div id="hole" class="back"></div>
-    <div id="card"></div>
-    <div id="hand"><div data-ng-show="hand.length" class="card front handCard" data-card="hand[hand.length-1].info" style="background-position: {{hand[hand.length-1].backgroundPosition}}"></div></div>
+    <div data-tp-field id="field"><div data-ng-repeat="card in fieldCards" data-ng-if="card.value !== null" data-ng-click="fieldClick()" data-tp-card id="card-{{$index + 1}}" class="card fieldCard" data-ng-class="{'peak': $index < 4, 'front': isFront($index), 'back': !isFront($index)}" data-card="getCardInfo($index)" style="background-position: {{card.backgroundPosition}}"></div></div>
+    <div id="hole" class="back" data-ng-click="flipHoleCard()"></div>
+    <div id="hand"><div data-ng-show="hand" data-tp-hand class="card front handCard" data-card="getHandInfo()" style="background-position: {{hand.backgroundPosition}}"></div></div>
     <div id="stats" class="stats">
         <p>Score: <span class="statVal" id="score">{{score}}</span></p>
         <p>Cards Left: <span class="statVal" id="cardsLeft">{{cardsLeft}}</span></p>

@@ -37,6 +37,9 @@ angular.module('tripeaks').factory('Score', function(){
             incrementer = 1;
             scoreObj.score -= amt;
             scoreObj.thisRun = 0;
+        },
+        resetForNewHand: function(){
+            scoreObj.thisRun = 0;
         }
 
     };

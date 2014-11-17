@@ -35,7 +35,7 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     $scope.deal = function(){
         var newDeal = Deck.shuffle().shuffle().deal();
-
+        Score.resetForNewHand();
         $scope.fieldCards = newDeal.field;
         $scope.hole = newDeal.hole;
 

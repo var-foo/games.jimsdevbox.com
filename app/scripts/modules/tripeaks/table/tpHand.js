@@ -10,7 +10,7 @@ angular.module('tripeaks').directive('tpHand', function(Field){
                 if(scope.card){
                     Field.registerHandCard(scope.card.value);
                 }
-            })
+            });
         }
     };
 });

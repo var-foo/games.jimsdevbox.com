@@ -39,8 +39,10 @@ angular.module('tripeaks').factory('Field', function(Hand, Score, $rootScope, $t
             fieldCards = cards;
             //console.log('field cards', fieldCards);
         },
-        getCards: function(){
-            return fieldCards;
+        getCards: function(blnOnlyWithValue){
+            return (blnOnlyWithValue) ? fieldCards.filter(function(item){
+                return item.value !== null;
+            }) : fieldCards;
         }
-    }
+    };
 });

@@ -13,9 +13,7 @@ angular.module('tripeaks').directive('tpCard', function($timeout, Field){
                 scope.card.id = attrs.id;
                 scope.card.isPeak = elem.hasClass('peak');
                 elem.click(function(){
-                    var handVal = Field.getHandVal();
                     Field.removeFieldCard(scope.card);
-                    //console.log('hand value', handVal);
                 });
             });
 

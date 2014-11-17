@@ -6,6 +6,7 @@
 // Set up all the modules we are going to use in this application
 angular.module('app', [
     'ui.router',
+    'ui.bootstrap',
     'vfStyleResolve',
     'ngResource',
     'tripeaks'

@@ -17,7 +17,7 @@ angular.module('tripeaks').factory('Score', function(){
         addToScore: function(isPeak){
             var amtToAdd = 0,
                 peakScore = (peaksHit + 1) * 15;
-            console.log('adding to score');
+            //console.log('adding to score');
             if(isPeak){
                 scoreObj.score += + peakScore;
                 amtToAdd = peakScore;

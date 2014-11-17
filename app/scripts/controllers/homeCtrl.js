@@ -45,10 +45,6 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     };
 
-    $scope.fieldClick = function(){
-        $scope.$broadcast('cardRemovedFromField');
-    };
-
     $scope.getHandInfo = function(){
         return $scope.hand;
     };

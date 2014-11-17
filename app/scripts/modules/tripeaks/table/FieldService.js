@@ -1,4 +1,4 @@
-angular.module('tripeaks').factory('Field', function(Hand, Score){
+angular.module('tripeaks').factory('Field', function(Hand, Score, $rootScope, $timeout){
     "use strict";
 
     var handVal = null;
@@ -17,7 +17,7 @@ angular.module('tripeaks').factory('Field', function(Hand, Score){
 
         removeFieldCard: function(card){
             var fieldVal = card.value;
-            console.log('field card to remove', card);
+            //console.log('field card to remove', card);
 
             // make a copy of the card so we can keep the field array the same length
             var cardForHand = $.extend({}, card);
@@ -25,6 +25,10 @@ angular.module('tripeaks').factory('Field', function(Hand, Score){
                 Hand.receiveCard(cardForHand);
                 fieldCards[card.index].value = null;
                 Score.addToScore(card.isPeak);
+                $timeout(function(){
+                    $rootScope.$broadcast('fieldCardRemoved');
+                });
+
                 return true;
             } else{
                 return false;
@@ -33,7 +37,7 @@ angular.module('tripeaks').factory('Field', function(Hand, Score){
         },
         registerFieldCards: function(cards){
             fieldCards = cards;
-            console.log('field cards', fieldCards);
+            //console.log('field cards', fieldCards);
         },
         getCards: function(){
             return fieldCards;

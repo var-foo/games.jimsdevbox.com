@@ -7,19 +7,23 @@ angular.module('tripeaks').directive('tpCard', function($timeout, Field){
             card: '='
         },
         link: function(scope,elem,attrs,tpField){
-            tpField.registerCard(elem);
-            scope.card.id = attrs.id;
-            // TODO: isPeak is not working
-            scope.card.isPeak = elem.hasClass('peak');
-            elem.click(function(){
-                var handVal = Field.getHandVal();
-                Field.removeFieldCard(scope.card);
-                console.log('hand value', handVal);
+            // Timeout is here because isPeak doesn't calculate right away, so this avoids the race condition
+            $timeout(function(){
+                tpField.registerCard(elem);
+                scope.card.id = attrs.id;
+                scope.card.isPeak = elem.hasClass('peak');
+                elem.click(function(){
+                    var handVal = Field.getHandVal();
+                    Field.removeFieldCard(scope.card);
+                    //console.log('hand value', handVal);
+                });
             });
 
-            scope.$on('cardRemovedFromField', function(){
+
+            scope.$on('fieldCardRemoved', function(){
                 $timeout(function(){
-                    if(tpField.askToFlip(elem)){
+                    console.log('fielCardClicked', scope);
+                    if(tpField.askToFlip(elem, scope.card.value)){
                         elem.removeClass('back').addClass('front');
                     }
                 });

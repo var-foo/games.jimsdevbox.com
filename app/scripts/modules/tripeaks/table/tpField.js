@@ -17,11 +17,16 @@ angular.module('tripeaks').directive('tpField', function($timeout, defaults, Fie
                 return this;
             };
 
-            this.askToFlip = function(cardToFlip){
+            this.askToFlip = function(cardToFlip, cardValue){
                 var shouldFlip = true,
                     cards = Field.getCards(),
                     cardToFlipTop = (cardToFlip.css('top') != 0) ? parseInt(cardToFlip.css('top').slice(0, -2), 10) : 0,
                     cardToFlipLeft = (cardToFlip.css('left') != 0) ? parseInt(cardToFlip.css('left').slice(0, -2), 10) : 0;
+
+                if(cardValue === null){
+                    return false;
+                }
+                console.log('asking to flip card', cardToFlip);
 
                 angular.forEach(cards, function(fieldCard){
                     var $card = $('#' + fieldCard.id),

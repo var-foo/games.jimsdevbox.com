@@ -26,7 +26,6 @@ angular.module('tripeaks').directive('tpField', function($timeout, defaults, Fie
                 if(cardValue === null){
                     return false;
                 }
-                console.log('asking to flip card', cardToFlip);
 
                 angular.forEach(cards, function(fieldCard){
                     var $card = $('#' + fieldCard.id),

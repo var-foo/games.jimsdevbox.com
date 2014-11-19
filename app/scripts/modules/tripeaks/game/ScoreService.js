@@ -1,4 +1,4 @@
-angular.module('tripeaks').factory('Score', function(localStorageService){
+angular.module('tripeaks').factory('Score', function(localStorageService, Options){
     "use strict";
     var scoreObj = {
         score: 0,
@@ -10,18 +10,18 @@ angular.module('tripeaks').factory('Score', function(localStorageService){
     var incrementer = 1;
     var peaksHit = 0;
 
+    var options = Options.getOptions();
+
     var smooshScore = function(savedScore){
         return $.extend(scoreObj, savedScore);
-    }
+    };
 
     return {
         getScore: function(){
             var savedScore = localStorageService.get('score');
             if(savedScore){
-                console.log('savedScore', savedScore);
                 // smoosh the objects together! Sweet!
                 scoreObj = smooshScore(savedScore);
-                console.log('new ScoreObj', scoreObj);
             }
             return scoreObj;
         },
@@ -35,7 +35,7 @@ angular.module('tripeaks').factory('Score', function(localStorageService){
         },
         addToScore: function(isPeak){
             var amtToAdd = 0,
-                peakScore = (peaksHit + 1) * 15;
+                peakScore = (peaksHit + 1) * options.peakBaseValue;
             //console.log('adding to score');
             if(isPeak){
                 scoreObj.score += + peakScore;
@@ -63,6 +63,16 @@ angular.module('tripeaks').factory('Score', function(localStorageService){
             scoreObj.thisRun = 0;
 
             return this;
+        },
+        resetScore: function(){
+            scoreObj = {
+                score: 0,
+                thisRun: 0,
+                bestRun: 0,
+                allTimeBestRun: 0
+            }
+
+            return this.saveScore();
         }
 
     };

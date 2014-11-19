@@ -1,5 +1,7 @@
-angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Score, modalService, $sce){
+angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, Modal, $sce){
     "use strict";
+
+    var options = Options.getOptions();
 
     var adjustScoreForNewHand = function(){
         var cardsToCount = Field.getCards(true);
@@ -43,7 +45,6 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
     $scope.$watch(function(){
         return Score.getScore();
     }, function(n){
-        console.log('score changed', n);
         $scope.score = n;
     }, true);
 
@@ -63,7 +64,7 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
     };
 
     $scope.newHand = function(){
-        var pointsToLose = Field.getCards(true).length * 5;
+        var pointsToLose = Field.getCards(true).length * options.amountToDecrement;
 
         var modalOptions = {
             closeButtonText: 'No',
@@ -72,8 +73,8 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
             bodyText: $sce.trustAsHtml('Are you sure you want to Start a new hand? <strong>You will lose '+ pointsToLose +' points!</strong>')
         };
 
-        if(Field.getCards(true).length && $scope.hole.length){
-            modalService.showModal({}, modalOptions).then(function () {
+        if(Field.getCards(true).length && $scope.hole.length && options.showConfirmationModal){
+            Modal.showModal({}, modalOptions).then(function () {
                 deal();
             });
         } else{
@@ -81,12 +82,29 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
         }
     };
 
+    $scope.setOptions = function(){
+        var modalDefaults = {
+            templateUrl: '/scripts/modules/tripeaks/game/optionsModal.html',
+            controller: 'OptionsCtrl'
+        };
+
+        //var modalOptions = {
+        //    closeButtonText: 'Cancel',
+        //    actionButtonText: 'Save',
+        //    headerText: 'Game Options'
+        //};
+
+        Modal.showModal(modalDefaults, {}).then(function (data) {
+            $scope.options = Options.setOptions(data);
+        });
+    };
+
     // Warn the user and adjust the score if they leave the page
     $(window).on('beforeunload', function(e){
 
         if(Field.getCards(true).length && $scope.hole.length) {
             e.preventDefault();
-            return 'If you leave this page, you will lose ' + (Field.getCards(true).length * 5) + ' points!';
+            return 'If you leave this page, you will lose ' + (Field.getCards(true).length * options.amountToDecrement) + ' points!';
         }
     });
     $(window).on('unload', function(){

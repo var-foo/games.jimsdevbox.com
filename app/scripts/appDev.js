@@ -15,6 +15,7 @@ angular.module('appDev', ['app', 'ngMockE2E', 'vf.mocks']).run(function (
     // Allow views through
     $httpBackend.whenGET(/\.\.\/views\/.*/).passThrough();
     $httpBackend.whenGET('/scripts/modules/tripeaks/newHand/newHandModal.html').passThrough();
+    $httpBackend.whenGET('/scripts/modules/tripeaks/game/optionsModal.html').passThrough();
 
 }).config(function($provide) {
     "use strict";

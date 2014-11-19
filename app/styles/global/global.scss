@@ -15,22 +15,24 @@ p { margin:0; }
 }
 
 .stats{
-    position:absolute;
     color:#04A1F2;
     border:1px solid #04A1F2;
     -moz-border-radius:5px;
     border-radius:5px;
     padding:5px;
+    margin-bottom: 1em;
 }
 
-#stats{
-    top: 435px;
-    left:100px;
-}
-
-#info{
+#infoAndOptions{
+    position: absolute;
     top: 435px;
     right: 100px;
+}
+
+#mainControl{
+    position: absolute;
+    top: 435px;
+    left:100px;
 }
 
 .statVal { font-weight: 700; }
@@ -75,6 +77,12 @@ p { margin:0; }
     top: 526px;
     left: 200px;
 }
+
+//#changeOptions {
+//    position: absolute;
+//    top: 520px;
+//    right: 92px;
+//}
 
 /* We start all cards in the Hole, then animate out. */
 #hole,

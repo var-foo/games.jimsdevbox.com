@@ -20,7 +20,6 @@ angular.module('tripeaks').directive('tpCard', function($timeout, Field){
 
             scope.$on('fieldCardRemoved', function(){
                 $timeout(function(){
-                    console.log('fieldCardClicked', scope);
                     if(tpField.askToFlip(elem, scope.card.value)){
                         elem.removeClass('back').addClass('front');
                     }

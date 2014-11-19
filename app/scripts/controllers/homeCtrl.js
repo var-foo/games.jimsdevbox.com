@@ -3,15 +3,13 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     var adjustScoreForNewHand = function(){
         var cardsToCount = Field.getCards(true);
-        Score.decrementScore(cardsToCount.length * 5);
+        return Score.resetForNewHand().decrementScore(cardsToCount.length * 5);
     };
 
     var deal = function(){
         var newDeal = Deck.shuffle().shuffle().deal();
 
-        Score.resetForNewHand();
-
-        adjustScoreForNewHand();
+        $scope.score = adjustScoreForNewHand();
 
         $scope.fieldCards = newDeal.field;
         $scope.hole = newDeal.hole;
@@ -36,22 +34,17 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     // watch the hand card for changes
     $scope.$watch(function() {
-            return Hand.getCard();
-        }, function(n){
-            console.log('Hand card changed', n);
-            $scope.hand = n;
-        });
+        return Hand.getCard();
+    }, function(n){
+        $scope.hand = n;
+    });
 
     // watch the score for changes
     $scope.$watch(function(){
         return Score.getScore();
     }, function(n){
-        console.log('score changed');
-        $scope.score = n.score;
-        $scope.thisRun = n.thisRun;
-        $scope.currentRun = n.currentRun;
-        $scope.bestRun = n.bestRun;
-        $scope.allTimeBestRun = n.allTimeBestRun;
+        console.log('score changed', n);
+        $scope.score = n;
     }, true);
 
 
@@ -65,7 +58,7 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
     };
 
     $scope.holeClick = function(){
-        Score.decrementScore(5);
+        $scope.score = Score.decrementScore(5);
         Hole.passCardToHand();
     };
 
@@ -79,7 +72,7 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
             bodyText: $sce.trustAsHtml('Are you sure you want to Start a new hand? <strong>You will lose '+ pointsToLose +' points!</strong>')
         };
 
-        if(Field.getCards(true).length){
+        if(Field.getCards(true).length && $scope.hole.length){
             modalService.showModal({}, modalOptions).then(function () {
                 deal();
             });
@@ -87,4 +80,16 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
             deal();
         }
     };
+
+    // Warn the user and adjust the score if they leave the page
+    $(window).on('beforeunload', function(e){
+
+        if(Field.getCards(true).length && $scope.hole.length) {
+            e.preventDefault();
+            return 'If you leave this page, you will lose ' + (Field.getCards(true).length * 5) + ' points!';
+        }
+    });
+    $(window).on('unload', function(){
+        adjustScoreForNewHand();
+    })
 });

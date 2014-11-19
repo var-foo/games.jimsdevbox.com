@@ -41,14 +41,7 @@ angular.module('tripeaks').factory('Card', function(defaults){
     };
 
     var getValue = function(){
-        var value = number;
-        //if (number >= 10) {
-        //    value = 10;
-        //}
-        //if (number === 1) {
-        //    value = 11;
-        //}
-        return value;
+        return number;
     };
 
     var getName = function(){

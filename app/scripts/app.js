@@ -9,6 +9,7 @@ angular.module('app', [
     'ui.bootstrap',
     'vfStyleResolve',
     'ngResource',
+    'LocalStorageModule',
     'tripeaks'
 ]).config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     'use strict';

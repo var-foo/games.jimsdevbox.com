@@ -4,6 +4,7 @@
 Imports the [Compass](http://compass-style.org/reference/compass/) library, including vertical rhythm.
 */
 @import "compass";
+@import "bootstrap/bootstrap";
 //@import "breakpoint";
 
 // ## Other linked libraries
@@ -24,3 +25,4 @@ Imports the [Compass](http://compass-style.org/reference/compass/) library, incl
 @import "global/global";
 @import "partials/default";
 @import "partials/modal";
+@import "partials/animations";

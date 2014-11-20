@@ -1,6 +1,7 @@
 # Using Bundler to sort out dependencies:
 require 'rubygems'
 require 'bundler/setup'
+require 'boostrap-sass
 Bundler.require(:sass)
 
 # Set this to the root of your project when deployed:

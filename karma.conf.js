@@ -13,11 +13,7 @@ module.exports = function(config) {
             'app/bower_components/jquery/jquery.js',
             'app/bower_components/angular/angular.js',
             'app/bower_components/angular-animate/angular-animate.js',
-            'app/bower_components/angular-cookies/angular-cookies.js',
-            'app/bower_components/angular-resource/angular-resource.js',
-            'app/bower_components/angular-sanitize/angular-sanitize.js',
             'app/bower_components/angular-local-storage/angular-local-storage.js',
-            'app/bower_components/json3/lib/json3.min.js',
             'app/bower_components/angular-ui-router/release/angular-ui-router.js',
             'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             // endbower

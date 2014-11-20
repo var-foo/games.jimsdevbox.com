@@ -5,13 +5,12 @@
 /** @namespace */
 // Set up all the modules we are going to use in this application
 angular.module('app', [
+    'ngAnimate',
     'ui.router',
     'ui.bootstrap',
-    'vfStyleResolve',
-    'ngResource',
     'LocalStorageModule',
     'tripeaks'
-]).config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+]).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     'use strict';
 
     $locationProvider.html5Mode(true);
@@ -29,32 +28,4 @@ angular.module('app', [
             controller: 'HomeCtrl'
         });
 
-    // Handles 404 and 401 errors.
-    $httpProvider.interceptors.push(['$q', function($q) {
-        return {
-            'response': function(response) {
-                // do something on success
-                return response || $q.when(response);
-            },
-
-            'responseError': function(response) {
-                var status = response.status,
-                    loginUrl = "/login";
-
-                // Unauthorized
-                if(status === 401) {
-                    window.location = loginUrl;
-                    return;
-                }
-                // No results found, but the route is valid.
-                if(status === 404 && typeof response.data !== "undefined") {
-                    return response.data;
-                }
-                return $q.reject(response);
-            }
-        };
-    }]);
-
-}).run(function(){
-    "use strict";
 });

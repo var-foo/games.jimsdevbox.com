@@ -1,10 +1,4 @@
 <!doctype html>
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7" id="ng-app" data-ng-app="app"> <![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8" id="ng-app" data-ng-app="app"> <![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9" id="ng-app" data-ng-app="app"> <![endif]-->
 <html class="no-js" id="ng-app" data-ng-app="app">
 
 <head>
@@ -14,16 +8,8 @@
     <meta name="description" content="angular-tripeaks">
     <meta name="viewport" content="width=device-width">
     <base href="/" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <!-- build:css({.tmp,app}) /styles/style.css -->
     <link rel="stylesheet" href="/styles/style.css"/>
-    <!-- endbuild -->
-    <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
-    <!-- build:js /scripts/iePatch.js -->
-    <script src="/scripts/msie/shim.js"></script>
-    <script src="/scripts/msie/polyfill.js"></script>
-    <script src="/bower_components/json3/lib/json3.min.js"></script>
     <!-- endbuild -->
     <![endif]-->
 </head>
@@ -36,9 +22,6 @@
 <script src="/bower_components/jquery/jquery.js"></script>
 <script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/angular-animate/angular-animate.js"></script>
-<script src="/bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="/bower_components/angular-resource/angular-resource.js"></script>
-<script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="/bower_components/angular-local-storage/angular-local-storage.js"></script>
 <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -46,18 +29,7 @@
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) /scripts/scripts.js -->
-
-<script src="/scripts/helpers.js"></script>
 <script src="/scripts/app.js"></script>
-
-<script src="/scripts/modules/constants/constants.js"></script>
-
-<script src="/scripts/modules/vfStyleResolve/vfStyleResolve.js"></script>
-
-<script src="/scripts/directives/a.js"></script>
-<script src="/scripts/directives/link.js"></script>
-
-<script src="/scripts/services/scrollService.js"></script>
 
 <script src="/scripts/controllers/main.js"></script>
 <script src="/scripts/controllers/homeCtrl.js"></script>
@@ -79,12 +51,6 @@
 <script src="/scripts/modules/tripeaks/game/OptionsService.js"></script>
 <script src="/scripts/modules/tripeaks/game/OptionsCtrl.js"></script>
 <script src="/scripts/modules/tripeaks/game/ModalService.js"></script>
-<!-- endbuild -->
-
-<!-- build:js /scripts/dev.js -->
-<script src="/bower_components/angular-mocks/angular-mocks.js"></script>
-<script src="/scripts/modules/mocks/vfMocks.js"></script>
-<script src="/scripts/appDev.js"></script>
 <!-- endbuild -->
 
 </body>

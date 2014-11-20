@@ -2,8 +2,7 @@ angular.module('tripeaks').controller('OptionsCtrl', function($scope, Options, S
     $scope.options = Options.getOptions();
     console.log($scope.options);
     $scope.modalOptions = {
-        closeButtonText: 'Cancel',
-        actionButtonText: 'Save',
+        actionButtonText: 'Ok',
         headerText: 'Game Options',
         ok: function (result) {
             $modalInstance.close(result);

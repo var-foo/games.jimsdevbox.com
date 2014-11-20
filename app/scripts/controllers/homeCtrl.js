@@ -22,6 +22,8 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     };
 
+    $scope.isOn = true;
+
     $scope.options = Options.getOptions();
 
     $scope.fieldCards = [];
@@ -66,7 +68,7 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
     };
 
     $scope.newHand = function(){
-        var pointsToLose = Field.getCards(true).length * options.amountToDecrement;
+        var pointsToLose = Field.getCards(true).length * $scope.options.amountToDecrement;
 
         var modalOptions = {
             closeButtonText: 'No',
@@ -75,7 +77,7 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
             bodyText: $sce.trustAsHtml('Are you sure you want to Start a new hand? <strong>You will lose '+ pointsToLose +' points!</strong>')
         };
 
-        if(Field.getCards(true).length && $scope.hole.length && options.showConfirmationModal){
+        if(Field.getCards(true).length && $scope.hole.length && $scope.options.showConfirmationModal){
             Modal.showModal({}, modalOptions).then(function () {
                 deal();
             });
@@ -101,7 +103,7 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
         if(Field.getCards(true).length && $scope.hole.length) {
             e.preventDefault();
-            return 'If you leave this page, you will lose ' + (Field.getCards(true).length * options.amountToDecrement) + ' points!';
+            return 'If you leave this page, you will lose ' + (Field.getCards(true).length * $scope.options.amountToDecrement) + ' points!';
         }
     });
     $(window).on('unload', function(){

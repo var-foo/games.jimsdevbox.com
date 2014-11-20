@@ -1,4 +1,4 @@
-angular.module('tripeaks').directive('tpCard', function($timeout, Field){
+angular.module('tripeaks').directive('tpCard', function($timeout, Field, $animate){
     "use strict";
 
     return {
@@ -17,11 +17,18 @@ angular.module('tripeaks').directive('tpCard', function($timeout, Field){
                 });
             });
 
-
             scope.$on('fieldCardRemoved', function(){
                 $timeout(function(){
-                    if(tpField.askToFlip(elem, scope.card.value)){
-                        elem.removeClass('back').addClass('front');
+                    if(tpField.askToFlip(elem, scope.card.value) && elem.hasClass('back')){
+                        console.log('preparing to animate...');
+                        console.log($animate.enabled());
+                        scope.$apply(function(){
+                            $animate.removeClass(elem, 'back').then(function(){
+                                $animate.addClass(elem, 'front');
+                            });
+
+                        });
+
                     }
                 });
 

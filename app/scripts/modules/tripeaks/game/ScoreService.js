@@ -38,7 +38,7 @@ angular.module('tripeaks').factory('Score', function(localStorageService, Option
                 peakScore = (peaksHit + 1) * options.peakBaseValue;
             //console.log('adding to score');
             if(isPeak){
-                scoreObj.score += + peakScore;
+                scoreObj.score += peakScore;
                 amtToAdd = peakScore;
                 peaksHit++;
             }

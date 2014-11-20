@@ -1,7 +1,7 @@
 angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, Modal, $sce){
     "use strict";
 
-    var options = Options.getOptions();
+
 
     var adjustScoreForNewHand = function(){
         var cardsToCount = Field.getCards(true);
@@ -21,6 +21,8 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
         $scope.hand = Hand.getCard();
 
     };
+
+    $scope.options = Options.getOptions();
 
     $scope.fieldCards = [];
 
@@ -88,14 +90,9 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
             controller: 'OptionsCtrl'
         };
 
-        //var modalOptions = {
-        //    closeButtonText: 'Cancel',
-        //    actionButtonText: 'Save',
-        //    headerText: 'Game Options'
-        //};
-
         Modal.showModal(modalDefaults, {}).then(function (data) {
             $scope.options = Options.setOptions(data);
+            console.log('options', $scope.options);
         });
     };
 

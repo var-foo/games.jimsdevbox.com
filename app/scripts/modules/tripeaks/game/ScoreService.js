@@ -4,7 +4,8 @@ angular.module('tripeaks').factory('Score', function(localStorageService, Option
         score: 0,
         thisRun: 0,
         bestRun: 0,
-        allTimeBestRun: 0
+        allTimeBestRun: 0,
+        incrementer: 0
     };
 
     var incrementer = 1;
@@ -35,20 +36,22 @@ angular.module('tripeaks').factory('Score', function(localStorageService, Option
         },
         addToScore: function(isPeak){
             var amtToAdd = 0,
-                peakScore = (peaksHit + 1) * options.peakBaseValue;
-            //console.log('adding to score');
+                peakScore;
+
             if(isPeak){
-                scoreObj.score += peakScore;
-                amtToAdd = peakScore;
                 peaksHit++;
+                peakScore = peaksHit * options.peakBaseValue;
+                amtToAdd = peakScore;
             }
 
             amtToAdd += incrementer;
+            incrementer++;
+
+            scoreObj.incrementer = incrementer;
             scoreObj.score += amtToAdd;
             scoreObj.thisRun += amtToAdd;
             scoreObj.bestRun = (scoreObj.thisRun > scoreObj.bestRun) ? scoreObj.thisRun : scoreObj.bestRun;
             scoreObj.allTimeBestRun = (scoreObj.thisRun > scoreObj.allTimeBestRun) ? scoreObj.thisRun : scoreObj.allTimeBestRun;
-            incrementer++;
 
             return this.saveScore();
         },
@@ -70,7 +73,7 @@ angular.module('tripeaks').factory('Score', function(localStorageService, Option
                 thisRun: 0,
                 bestRun: 0,
                 allTimeBestRun: 0
-            }
+            };
 
             return this.saveScore();
         }

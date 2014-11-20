@@ -12,6 +12,7 @@
     <div id="mainControl">
         <div class="stats">
             <p>Score: <span class="statVal" id="score">{{score.score}} pts</span></p>
+            <p data-ng-if="options.showIncrementer">Incrementer: <span class="statVal" id="incrementer">{{score.incrementer}} pts</span></p>
             <p>Cards Left: <span class="statVal" id="cardsLeft">{{cardsLeft}}</span></p>
         </div>
         <button class="btn btn-primary" data-ng-click="newHand()">New Hand</button>
@@ -21,7 +22,7 @@
 
 
     <div id="infoAndOptions">
-        <div id="info" class="stats">
+        <div id="info" class="stats" data-ng-if="options.showStats">
             <p>This Run: <span class="statVal" id="currentRun">{{score.thisRun}}</span> pts</p>
             <p>Best Run: <span class="statVal" id="bestRun">{{score.bestRun}}</span> pts</p>
             <p>All Time: <span class="statVal" id="allTimeBestRun">{{score.allTimeBestRun}}</span> pts</p>

@@ -3,8 +3,10 @@ angular.module('tripeaks').factory('Options', function(){
 
     var optionsObj = {
         amountToDecrement: 5,
+        peakBaseValue: 15,
         showConfirmationModal: true,
-        peakBaseValue: 15
+        showIncrementer: true,
+        showStats: true
     };
 
     return {

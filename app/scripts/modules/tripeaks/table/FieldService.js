@@ -17,7 +17,6 @@ angular.module('tripeaks').factory('Field', function(Hand, Score, $rootScope, $t
 
         removeFieldCard: function(card){
             var fieldVal = card.value;
-            //console.log('field card to remove', card);
 
             // make a copy of the card so we can keep the field array the same length
             var cardForHand = $.extend({}, card);

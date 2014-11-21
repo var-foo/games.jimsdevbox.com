@@ -18,12 +18,10 @@ angular.module('tripeaks').directive('tpCard', function($timeout, Field, $animat
             });
 
             scope.$on('fieldCardRemoved', function(){
-                $timeout(function(){
                     if(tpField.askToFlip(elem, scope.card.value) && elem.hasClass('back')){
                         $animate.removeClass(elem, 'back');
                         $animate.addClass(elem, 'front');
                     }
-                });
 
             });
         }

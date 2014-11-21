@@ -1,8 +1,6 @@
 angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, Modal, $sce){
     "use strict";
 
-
-
     var adjustScoreForNewHand = function(){
         var cardsToCount = Field.getCards(true);
         return Score.resetForNewHand().decrementScore(cardsToCount.length * 5);
@@ -62,14 +60,10 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     $scope.holeClick = function(){
         $scope.score = Score.decrementScore(5);
-
         Hole.passCardToHand();
-
     };
 
     $scope.newHand = function(){
-
-
         var modalDefaults = {
             templateUrl: '/scripts/modules/tripeaks/newHand/newHandModal.html',
             controller: 'newHandCtrl'

@@ -5,7 +5,6 @@ angular.module('tripeaks').factory('Hand', function(){
     return {
         receiveCard: function(c){
             card = c;
-            //console.log('hand has received card', card);
             return this;
         },
         getCard: function(){

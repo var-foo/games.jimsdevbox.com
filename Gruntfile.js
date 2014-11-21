@@ -395,21 +395,14 @@ module.exports = function (grunt) {
           {
             expand: true,
             dot: true,
-            cwd: '<%= yeoman.app %>/assets',
-            dest: '<%= yeoman.dist %>/assets',
+            cwd: '<%= yeoman.app %>',
+            dest: '<%= yeoman.dist %>',
             src: [
               'views/**/*.html',
               'images/{,*/}*.{webp}',
               'fonts/*',
               'scripts/**/*.html'
             ]
-          },
-
-          {
-            expand: true,
-            cwd: '.tmp/images',
-            dest: '<%= yeoman.dist %>/images',
-            src: ['generated/*']
           }
         ]
       },

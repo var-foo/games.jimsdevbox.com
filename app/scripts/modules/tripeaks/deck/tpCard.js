@@ -23,10 +23,8 @@ angular.module('tripeaks').directive('tpCard', function($timeout, Field, $animat
                         console.log('preparing to animate...');
                         console.log($animate.enabled());
                         scope.$apply(function(){
-                            $animate.removeClass(elem, 'back').then(function(){
-                                $animate.addClass(elem, 'front');
-                            });
-
+                            $animate.removeClass(elem, 'back');
+                            $animate.addClass(elem, 'front');
                         });
 
                     }

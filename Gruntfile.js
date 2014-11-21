@@ -631,7 +631,6 @@ module.exports = function (grunt) {
       case 'test':
         tasks = [
           'clean:dist',
-          'newer:jshint',
           'concurrent:test',
           'autoprefixer',
           'copy:uncompressed',

@@ -20,6 +20,7 @@ angular.module('tripeaks').service('Modal', function ($modal) {
     };
 
     this.showModal = function(customModalDefaults, customModalOptions) {
+
         customModalDefaults = customModalDefaults || {};
         customModalDefaults.backdrop = 'static';
         return this.show(customModalDefaults, customModalOptions);
@@ -29,7 +30,6 @@ angular.module('tripeaks').service('Modal', function ($modal) {
         //Create temp objects to work with since we're in a singleton service
         var tempModalDefaults = {};
         var tempModalOptions = {};
-
         //Map angular-ui modal custom defaults to modal defaults defined in service
         angular.extend(tempModalDefaults, modalDefaults, customModalDefaults);
 

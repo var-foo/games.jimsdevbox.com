@@ -62,21 +62,23 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     $scope.holeClick = function(){
         $scope.score = Score.decrementScore(5);
+
         Hole.passCardToHand();
+
     };
 
     $scope.newHand = function(){
-        var pointsToLose = Field.getCards(true).length * $scope.options.amountToDecrement;
 
-        var modalOptions = {
-            closeButtonText: 'No',
-            actionButtonText: 'Yes',
-            headerText: 'Start new Hand?',
-            bodyText: $sce.trustAsHtml('Are you sure you want to Start a new hand? <strong>You will lose '+ pointsToLose +' points!</strong>')
+
+        var modalDefaults = {
+            templateUrl: '/scripts/modules/tripeaks/newHand/newHandModal.html',
+            controller: 'newHandCtrl'
         };
+        alert('working');
 
         if(Field.getCards(true).length && $scope.hole.length && $scope.options.showConfirmationModal){
-            Modal.showModal({}, modalOptions).then(function () {
+
+            Modal.showModal(modalDefaults, {}).then(function () {
                 deal();
             });
         } else{

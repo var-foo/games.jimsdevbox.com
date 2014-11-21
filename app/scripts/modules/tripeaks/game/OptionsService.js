@@ -18,4 +18,4 @@ angular.module('tripeaks').factory('Options', function(){
             return optionsObj;
         }
     };
-})
+});

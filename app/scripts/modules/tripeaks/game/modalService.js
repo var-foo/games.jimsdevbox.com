@@ -1,5 +1,6 @@
 /**
  * http://weblogs.asp.net/dwahlin/building-an-angularjs-modal-service
+ *
  */
 angular.module('tripeaks').service('Modal', function ($modal) {
     "use strict";

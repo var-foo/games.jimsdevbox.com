@@ -106,5 +106,5 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
     });
     $(window).on('unload', function(){
         adjustScoreForNewHand();
-    })
+    });
 });

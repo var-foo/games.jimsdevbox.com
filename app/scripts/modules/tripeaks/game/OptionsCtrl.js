@@ -1,4 +1,6 @@
 angular.module('tripeaks').controller('OptionsCtrl', function($scope, Options, Score, $modalInstance){
+    "use strict";
+
     $scope.options = Options.getOptions();
     console.log($scope.options);
     $scope.modalOptions = {
@@ -14,5 +16,5 @@ angular.module('tripeaks').controller('OptionsCtrl', function($scope, Options, S
 
     $scope.resetScore = function(){
         Score.resetScore();
-    }
+    };
 });

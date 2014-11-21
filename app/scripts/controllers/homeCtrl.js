@@ -1,4 +1,4 @@
-angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, $sce){
+angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, Modal, $sce){
     "use strict";
 
 

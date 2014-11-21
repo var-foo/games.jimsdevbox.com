@@ -37,7 +37,6 @@ angular.module('tripeaks').factory('Field', function(Hand, Score, $rootScope, $t
         },
         registerFieldCards: function(cards){
             fieldCards = cards;
-            //console.log('field cards', fieldCards);
         },
         getCards: function(blnOnlyWithValue){
             return (blnOnlyWithValue) ? fieldCards.filter(function(item){

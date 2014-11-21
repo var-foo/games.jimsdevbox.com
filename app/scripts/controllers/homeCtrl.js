@@ -1,4 +1,4 @@
-angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, Modal, $sce){
+angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, $sce){
     "use strict";
 
 
@@ -21,8 +21,6 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
         $scope.hand = Hand.getCard();
 
     };
-
-    $scope.isOn = true;
 
     $scope.options = Options.getOptions();
 

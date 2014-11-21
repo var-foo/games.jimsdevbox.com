@@ -1,5 +1,4 @@
 <div id="wrapper">
-    <div><input type="checkbox" data-ng-model="isOn"/><p data-ng-show="isOn">Hello</p></div>
     <div data-tp-field id="field">
         <div data-ng-repeat="card in fieldCards" data-ng-if="card.value !== null" data-ng-click="fieldClick()" data-tp-card id="card-{{$index + 1}}" class="card back fieldCard" data-ng-class="{'peak': $index < 3}" data-card="getCardInfo($index)" style="background-position: {{card.backgroundPosition}}"></div>
     </div>

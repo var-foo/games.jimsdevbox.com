@@ -1,4 +1,4 @@
-angular.module('tripeaks').factory('Field', function(Hand, Score, $rootScope, $timeout){
+angular.module('tripeaks').factory('Field', function(Hand, Score, $rootScope){
     "use strict";
 
     var handVal = null;
@@ -24,9 +24,7 @@ angular.module('tripeaks').factory('Field', function(Hand, Score, $rootScope, $t
                 Hand.receiveCard(cardForHand);
                 fieldCards[card.index].value = null;
                 Score.addToScore(card.isPeak);
-                $timeout(function(){
-                    $rootScope.$broadcast('fieldCardRemoved');
-                });
+                $rootScope.$broadcast('fieldCardRemoved');
 
                 return true;
             } else{

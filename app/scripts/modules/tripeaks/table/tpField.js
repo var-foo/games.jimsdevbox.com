@@ -1,4 +1,4 @@
-angular.module('tripeaks').directive('tpField', function($timeout, defaults, Field){
+angular.module('tripeaks').directive('tpField', function(defaults, Field){
     "use strict";
 
     return {
@@ -8,12 +8,11 @@ angular.module('tripeaks').directive('tpField', function($timeout, defaults, Fie
         template: '<div id="field" data-ng-transclude></div>',
         controller: function(){
 
-            this.registerCard = function(card){
-                $timeout(function(){
-                    if(card.attr('id').split('-')[1] > 18){
-                        card.removeClass('back').addClass('front');
-                    }
-                });
+            this.registerCard = function(card, idx){
+                console.log(card.attr('id'));
+                if(idx > 17){
+                    card.removeClass('back').addClass('front');
+                }
                 return this;
             };
 

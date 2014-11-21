@@ -8,7 +8,7 @@ angular.module('tripeaks').directive('tpCard', function(Field, $animate){
             tpCard: '='
         },
         link: function(scope,elem,attrs,tpField){
-            tpField.registerCard(elem);
+            tpField.registerCard(elem, scope.tpCard);
             scope.card.id = attrs.id;
             scope.card.isPeak = scope.tpCard < 3;
             elem.click(function(){

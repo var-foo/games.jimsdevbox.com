@@ -74,7 +74,6 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
             templateUrl: '/scripts/modules/tripeaks/newHand/newHandModal.html',
             controller: 'newHandCtrl'
         };
-        alert('working');
 
         if(Field.getCards(true).length && $scope.hole.length && $scope.options.showConfirmationModal){
 

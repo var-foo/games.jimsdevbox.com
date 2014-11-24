@@ -1,0 +1,31 @@
+<div id="wrapper">
+    <div data-tp-field id="field">
+        <div data-ng-repeat="card in fieldCards" data-ng-if="card.value !== null" data-ng-click="fieldClick()" data-tp-card="$index" id="card-{{$index + 1}}" class="card back fieldCard" data-card="getCardInfo($index)" style="background-position: {{card.backgroundPosition}}"></div>
+    </div>
+
+    <div id="hole" data-ng-hide="!cardsLeft" class="back" data-ng-click="holeClick()"></div>
+
+    <div id="hand">
+        <div data-ng-show="hand" data-tp-hand class="card front handCard" data-card="getHandInfo()" style="background-position: {{hand.backgroundPosition}}"></div>
+    </div>
+
+    <div id="mainControl">
+        <div class="stats">
+            <p>Score: <span class="statVal" id="score">{{score.score}} pts</span></p>
+            <p data-ng-if="options.showIncrementer">Incrementer: <span class="statVal" id="incrementer">{{score.incrementer}} pts</span></p>
+            <p>Cards Left: <span class="statVal" id="cardsLeft">{{cardsLeft}}</span></p>
+        </div>
+        <button class="btn btn-primary" data-ng-click="newHand()">New Hand</button>
+    </div>
+
+    <div id="infoAndOptions">
+        <div id="info" class="stats" data-ng-if="options.showStats">
+            <p>This Run: <span class="statVal" id="currentRun">{{score.thisRun}}</span> pts</p>
+            <p>Best Run: <span class="statVal" id="bestRun">{{score.bestRun}}</span> pts</p>
+            <p>All Time: <span class="statVal" id="allTimeBestRun">{{score.allTimeBestRun}}</span> pts</p>
+        </div>
+        <button id="changeOptions" data-ng-click="setOptions()" class="btn btn-info">Options</button>
+    </div>
+</div>
+
+

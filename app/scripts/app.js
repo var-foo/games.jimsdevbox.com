@@ -19,13 +19,12 @@ angular.module('app', [
         .state('app', {
             abstract: true,
             url: '/',
-            templateUrl: '../views/app.html',
-            controller: 'MainCtrl'
+            templateUrl: '../views/app.html'
         })
         .state('app.main', {
             url: '',
             templateUrl: '../views/partials/home.html',
-            controller: 'HomeCtrl'
+            controller: 'MainCtrl'
         });
 
 });

@@ -9,7 +9,7 @@ angular.module('tripeaks').service('Modal', function ($modal) {
         backdrop: true,
         keyboard: true,
         modalFade: true,
-        templateUrl: '/scripts/modules/tripeaks/newHand/newHandModal.html'
+        templateUrl: '/modules/tripeaks/newHand/newHandModal.html'
     };
 
     var modalOptions = {

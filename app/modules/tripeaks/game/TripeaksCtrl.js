@@ -1,4 +1,4 @@
-angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, Modal, $sce){
+angular.module('tripeaks').controller('TripeaksCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, Modal){
     "use strict";
 
     var adjustScoreForNewHand = function(){
@@ -65,7 +65,7 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     $scope.newHand = function(){
         var modalDefaults = {
-            templateUrl: '/scripts/modules/tripeaks/newHand/newHandModal.html',
+            templateUrl: '/modules/tripeaks/newHand/newHandModal.html',
             controller: 'newHandCtrl'
         };
 
@@ -81,7 +81,7 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
     $scope.setOptions = function(){
         var modalDefaults = {
-            templateUrl: '/scripts/modules/tripeaks/game/optionsModal.html',
+            templateUrl: '/modules/tripeaks/game/optionsModal.html',
             controller: 'OptionsCtrl'
         };
 

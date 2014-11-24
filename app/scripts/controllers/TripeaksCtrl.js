@@ -7,7 +7,8 @@ angular.module('app').controller('TripeaksCtrl', function($scope, Deck, Field, H
     };
 
     var deal = function(){
-        var newDeal = Deck.shuffle().shuffle().deal();
+        var hands = {field: 30, hole: 26};
+        var newDeal = Deck.shuffle().shuffle().deal(hands);
 
         $scope.score = adjustScoreForNewHand();
 

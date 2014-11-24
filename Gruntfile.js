@@ -403,8 +403,16 @@ module.exports = function (grunt) {
                             'views/**/*.html',
                             'images/**/*',
                             'fonts/*',
-                            'scripts/**/*.html',
-                            'modules/**/*.html'
+                            'scripts/**/*.html'
+                        ]
+                    },
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= yeoman.app %>',
+                        dest: '<%= yeoman.dist %>',
+                        src: [
+                            'modules/**/*'
                         ]
                     }
                 ]

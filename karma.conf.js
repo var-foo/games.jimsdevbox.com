@@ -16,6 +16,7 @@ module.exports = function(config) {
             'app/bower_components/angular-local-storage/angular-local-storage.js',
             'app/bower_components/angular-ui-router/release/angular-ui-router.js',
             'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+            'app/bower_components/oclazyload/dist/ocLazyLoad.min.js',
             // endbower
             'app/**/*.html',
             'app/bower_components/angular-mocks/angular-mocks.js',

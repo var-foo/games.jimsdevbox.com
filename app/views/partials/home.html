@@ -1,2 +1,11 @@
-<h1>This is the homepage!</h1>
-<a data-ui-sref="app.tripeaks">Tripeaks</a>
+<div class="container">
+    <div class="row">
+        <div id="mainPage" class="jumbotron">
+            <h1>Games at Jim's Dev Box</h1>
+            <ul class="list-group">
+                <li ng-repeat="game in games"><a data-ui-sref="{{game.sref}}">{{game.name}}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

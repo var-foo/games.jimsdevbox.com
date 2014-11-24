@@ -1,6 +1,6 @@
-angular.module('tripeaks').controller('TripeaksCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, Modal){
+angular.module('app').controller('TripeaksCtrl', function($scope, Deck, Field, Hole, Hand, Options, Score, Modal){
     "use strict";
-
+    console.log('controller loaded');
     var adjustScoreForNewHand = function(){
         var cardsToCount = Field.getCards(true);
         return Score.resetForNewHand().decrementScore(cardsToCount.length * 5);

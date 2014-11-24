@@ -2,7 +2,7 @@ angular.module('tripeaks').controller('OptionsCtrl', function($scope, Options, S
     "use strict";
 
     $scope.options = Options.getOptions();
-    console.log($scope.options);
+
     $scope.modalOptions = {
         actionButtonText: 'Ok',
         headerText: 'Game Options',

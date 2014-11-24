@@ -9,7 +9,6 @@ angular.module('tripeaks').directive('tpField', function(defaults, Field){
         controller: function(){
 
             this.registerCard = function(card, idx){
-                console.log(card.attr('id'));
                 if(idx > 17){
                     card.removeClass('back').addClass('front');
                 }

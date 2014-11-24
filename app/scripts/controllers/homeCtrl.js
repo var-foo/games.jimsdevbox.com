@@ -87,7 +87,6 @@ angular.module('app').controller('HomeCtrl', function($scope, Deck, Field, Hole,
 
         Modal.showModal(modalDefaults, {}).then(function (data) {
             $scope.options = Options.setOptions(data);
-            console.log('options', $scope.options);
         });
     };
 
